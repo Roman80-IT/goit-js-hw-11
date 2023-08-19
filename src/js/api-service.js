@@ -17,9 +17,43 @@ export default class ApiService {
 
   //* Конструктор класу
   constructor() {
-    //* Ініціалізація пошукового запиту, сторінки та загальної кількості результатів
+    //* Ініціалізація пошукового запиту, сторінки та загальної к-сті результатів
     this.#searchQuery = '';
     this.#page = 1;
     this.#totalHits = 0;
+  }
+
+  //* Метод для збільшення номера поточної сторінки.
+  addPage() {
+    this.#page += 1;
+  }
+
+  //* Метод для скидання номера поточної сторінки на 1.
+  resetPage() {
+    this.#page = 1;
+  }
+
+  //* Метод для перевірки наявності більше сторінок для завантаження.
+  isMorePage() {
+    //* Перевірка наявності більше результатів для завантаження.
+    return PER_PAGE * (this.#page - 1) < this.#totalHits;
+  }
+
+  //* Асинхронний метод для отримання зображень за допомогою API.
+  async fetchImage() {
+    //* Виконання GET-запиту до Pixabay API з використанням axios.
+    const response = await axios.get(
+      `${BASE_URL}?key=${API_KEY}&q=${
+        this.#searchQuery
+      }&image_type=photo&orientation=horizontal&safesearch=true&per_page=${PER_PAGE}&page=${
+        this.#page
+      }`
+    );
+
+    //* Оновлення загальної к-сті результатів з отриманої відповіді.
+    this.#totalHits = response.data.totalHits;
+
+    //* Повернення даних з відповіді API.
+    return response.data;
   }
 }
