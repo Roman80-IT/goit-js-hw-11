@@ -46,6 +46,30 @@ function submitForm(event) {
   addImageAndUpdateUI(); //* Виклик ф-ції для завантаження зображень та оновлення інтерфейсу
 }
 
+//* Ф-ція, яка викликається при частковому виході контейнера зі зображеннями з області видимості
+function loadMore() {
+  if (search.isMorePage()) {
+    Loading.dots(); //* Відображення анімації завантаження
+    addImageAndUpdateUI(); //* Виклик ф-ції для завантаження додаткових зображень
+    return;
+  }
+  Notify.info("We're sorry, but you've reached the end of search results.");
+}
+
+//* Асинхронна ф-ція для завантаження зображень та оновлення інтерфейсу
+async function addImageAndUpdateUI() {
+  try {
+    const image = await search.fetchImage(); //* Отримання даних зображення з API
+    if (search.currentPage === 1 && search.totalHits !== 0) {
+      Notify.success(`Hooray! We found ${search.totalHits} images.`);
+    }
+
+    renderImage(image.hits); //* Оновлення інтерфейсу з отриманими даними зображення
+  } catch {
+    Notify.failure('Oops! Something went wrong! Try to reload the page!');
+  }
+}
+
 //* Ф-ція для відображення зображень на сторінці
 function renderImage(array) {
   if (!array.length) {
