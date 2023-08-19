@@ -39,6 +39,21 @@ export default class ApiService {
     return PER_PAGE * (this.#page - 1) < this.#totalHits;
   }
 
+  //* Геттер для отримання загальної к-сті результатів.
+  get totalHits() {
+    return this.#totalHits;
+  }
+
+  //* Геттер для отримання номера поточної сторінки.
+  get currentPage() {
+    return this.#page;
+  }
+
+  //* Сеттер для встановлення пошукового запиту.
+  set searchQuery(value) {
+    this.#searchQuery = value;
+  }
+
   //* Асинхронний метод для отримання зображень за допомогою API.
   async fetchImage() {
     //* Виконання GET-запиту до Pixabay API з використанням axios.
