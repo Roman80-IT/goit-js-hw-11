@@ -21,11 +21,11 @@ Loading.init({
   clickToClose: false,
 });
 
-//* Отримання посилань на елементи DOM (елементи сторінки) за допомогою їх ідентифікаторів або селекторів
+//* Отримання посилань на елементи DOM
 const form$ = document.getElementById('search-form'); //* Форма пошуку
 const imageContainer$ = document.querySelector('.gallery'); //* Контейнер для зображень
 
-//* Створення екземплярів класів для роботи з пошуком і світловим боксом
+//* Створення екземплярів класів для роботи з пошуком і Lightbox
 const search = new ApiService();
 const lightBox = new SimpleLightbox('.gallery a');
 
@@ -115,8 +115,8 @@ function renderImage(array) {
       }
     )
     .join('');
-  imageContainer$.insertAdjacentHTML('beforeend', markup); //* Додавання HTML розмітки зображень до контейнера
-  lightBox.refresh(); //* Оновлення світлового боксу
+  imageContainer$.insertAdjacentHTML('beforeend', markup); //* Додавання HTML-розмітки зображень до контейнера
+  lightBox.refresh(); //* Оновлення Lightbox
 
   Loading.remove(); //* Прибирання анімації завантаження
 

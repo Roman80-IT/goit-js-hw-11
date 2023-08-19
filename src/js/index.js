@@ -9,54 +9,52 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import scrollMonitor from 'scrollmonitor';
 
-//* Ініціалізація повідомлень Notiflix для відображення сповіщень користувачеві
+//* Ініціалізація повідомлень 'Notiflix'
 Notify.init({
   position: 'right-bottom',
 });
 
-//* Ініціалізація компонента завантаження Loading з відповідними налаштуваннями
+//* Ініціалізація компонента завантаження Loading
 Loading.init({
   backgroundColor: 'rgba(0,0,0,0.3)',
   svgColor: 'rgb(60, 197, 218)',
   clickToClose: false,
 });
 
-//* Отримання посилань на елементи DOM (елементи сторінки) за допомогою їх ідентифікаторів або селекторів
-const form$ = document.getElementById('search-form'); //* Форма пошуку
-const imageContainer$ = document.querySelector('.gallery'); //* Контейнер для зображень
+const form$ = document.getElementById('search-form');
+const imageContainer$ = document.querySelector('.gallery');
 
-//* Створення екземплярів класів для роботи з пошуком і світловим боксом
+//* Створення екземплярів класів для роботи з пошуком і Lightbox
 const search = new ApiService();
 const lightBox = new SimpleLightbox('.gallery a');
 
-//* Створення слухача подій для прокручування контейнера зі зображеннями
+//* Слухач для прокручування контейнера зі зображеннями
 const scrollListener = scrollMonitor.create(imageContainer$);
 scrollListener.partiallyExitViewport(loadMore);
 
-//* Cлухач
 form$.addEventListener('submit', submitForm);
 
 //* Ф-ція, яка виконується при поданні форми пошуку
 function submitForm(event) {
-  event.preventDefault(); //* Скидування cтандартної поведінки форми
-  imageContainer$.innerHTML = ''; //* Очистка контейнера зі зображеннями
-  Loading.dots(); //* Відображення анімації завантаження
+  event.preventDefault();
+  imageContainer$.innerHTML = '';
+  Loading.dots();
   search.searchQuery = form$.elements.searchQuery.value; //* Отримання тексту запиту з форми
-  search.resetPage(); //* Скидання поточної сторінки пошуку
-  addImageAndUpdateUI(); //* Виклик ф-ції для завантаження зображень та оновлення інтерфейсу
+  search.resetPage();
+  addImageAndUpdateUI(); //* Виклик ф-ції для завантаження додаткових зображень
 }
 
 //* Ф-ція, яка викликається при частковому виході контейнера зі зображеннями з області видимості
 function loadMore() {
   if (search.isMorePage()) {
-    Loading.dots(); //* Відображення анімації завантаження
+    Loading.dots();
     addImageAndUpdateUI(); //* Виклик ф-ції для завантаження додаткових зображень
     return;
   }
   Notify.info("We're sorry, but you've reached the end of search results.");
 }
 
-//* Асинхронна ф-ція для завантаження зображень та оновлення інтерфейсу
+//* Ф-ція для завантаження додаткових зображень
 async function addImageAndUpdateUI() {
   try {
     const image = await search.fetchImage(); //* Отримання даних зображення з API
@@ -115,10 +113,10 @@ function renderImage(array) {
       }
     )
     .join('');
-  imageContainer$.insertAdjacentHTML('beforeend', markup); //* Додавання HTML розмітки зображень до контейнера
-  lightBox.refresh(); //* Оновлення світлового боксу
+  imageContainer$.insertAdjacentHTML('beforeend', markup); //* Додавання HTML-розмітки зображень до контейнера
+  lightBox.refresh();
 
-  Loading.remove(); //* Прибирання анімації завантаження
+  Loading.remove();
 
-  search.addPage(); //* Збільшення номера поточної сторінки пошуку
+  search.addPage();
 }
