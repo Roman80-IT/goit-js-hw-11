@@ -63,7 +63,8 @@
 
 Шаблон розмітки картки одного зображення для галереї:
 
-```<div class="photo-card">
+```html
+<div class="photo-card">
   <img src="" alt="" loading="lazy" />
   <div class="info">
     <p class="info-item">
@@ -108,7 +109,7 @@ HTML документ вже містить розмітку кнопки, по 
 
 Після першого запиту з кожним новим пошуком отримайте повідомлення, в якому буде написано, скільки всього знайшли зображень (властивість `totalHits`). Текст повідомлення - "Hooray! We found {totalHits} images."
 
-```*javascript*
+```javascript
 // Після отримання відповіді від сервера
 const totalHits = data.totalHits;
 const message = `Hooray! We found ${totalHits} images.`;
@@ -130,7 +131,7 @@ Notiflix.Notify.success(message);
 - Бібліотека містить метод 'refresh()', який обов'язково потрібно викликати щоразу після додавання нової групи карток зображень.
 Для того щоб підключити CSS код бібліотеки в проект, необхідно додати ще один імпорт, крім того, що описаний в документації.
 
-```
+```javascript
 // Описаний в документації
 import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
