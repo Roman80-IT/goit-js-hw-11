@@ -4,49 +4,33 @@
 
 ## Критерії
 
-- Проект зібраний за допомогою `[parcel-project-template]`(https://github.com/goitacademy/parcel-project-template)
-- Для HTTP-запитів використана бібліотека `[axios]`(https://axios-http.com/)
+- Проект зібраний за допомогою [`parcel-project-template`](https://github.com/goitacademy/parcel-project-template)
+- Для HTTP-запитів використана бібліотека [`axios`](https://axios-http.com/)
 - Використовується синтаксис `async/await`.
 - Для повідомлень використана бібліотека [`notiflix`](https://github.com/notiflix/Notiflix#readme)
 - Код відформатований за допомогою `Prettier`.
 
-## Підготовка нового проекту
+### Форма пошуку
 
-1. Переконайся, що на комп'ютері встановлена LTS-версія Node.js.
-   [Завантаж та встанови](https://nodejs.org/en/) її, якщо потрібно.
-2. Клонуй цей репозиторій.
-3. Зміни ім'я папки з `parcel-project-template` на ім'я свого проекту.
-4. Створи новий порожній репозиторій на GitHub.
-5. Відкрий проект у VSCode, запусти термінал та пов'яжи проект з
-   GitHub-репозиторієм
-   [за інструкцією](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Встанови залежності проекту в терміналі командою `npm install`.
-7. Запусти режим розробки, виконавши команду `npm start`.
-8. Перейди у браузері за адресою [http://localhost:1234](http://localhost:1234).
-   Ця сторінка автоматично перезавантажуватиметься після збереження змін у
-   файлах проекту.
+Форма спочатку міститься в HTML документі. Користувач буде вводити рядок для
+пошуку у текстове поле, а по сабміту форми необхідно виконувати HTTP-запит.
 
-## Файли та теки
+```html
+<form class="search-form" id="search-form">
+  <input
+    type="text"
+    name="searchQuery"
+    autocomplete="off"
+    placeholder="Search images..."
+  />
+  <button type="submit">Search</button>
+</form>```
 
-- Усі паршали файлів стилів повинні лежати у теці (в папці) `src/sass` та
-  імпортуватися у файли стилів сторінок. Наприклад, для `index.html` файл стилів
-  називається `index.scss`.
-- Додавай зображення у теку `src/images`. Збирач оптимізує їх, але лише при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, так як на слабких машинах це може зайняти багато
-  часу.
+
+
 
 ## Деплой
 
-Для налаштування деплою проекту потрібно виконати декілька додаткових кроків по
-налаштуванню твого репозиторію. Зайди у вкладку `Settings` та у підрозділі
-`Actions` обери пункт `General`.
-
-![GitHub actions settings](./assets/actions-config-step-1.png)
-
-Прокрути сторінку до останнього розділу, у якому переконайся, що обрані опції як
-на наступному зображенні, та натисни `Save`. Без цих налаштувань у збірці буде
-недостатньо прав для автоматизації процесу деплою.
 
 ![GitHub actions settings](./assets/actions-config-step-2.png)
 
