@@ -5,7 +5,7 @@
 ## Критерії
 
 - Проект зібраний за допомогою [`parcel-project-template`](https://github.com/goitacademy/parcel-project-template)
-- Для HTTP-запитів використана бібліотека [`axios`](https://axios-http.com/)
+- Для HTTP-запитів використана бібліотека [`axios`](https://axios-http.com/) [`axios`](https://axios-http.com/)
 - Використовується синтаксис `async/await`.
 - Для повідомлень використана бібліотека [`notiflix`](https://github.com/notiflix/Notiflix#readme)
 - Код відформатований за допомогою `Prettier`.
