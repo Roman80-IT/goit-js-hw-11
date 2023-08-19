@@ -1,6 +1,14 @@
 # Пошук зображень
 
-Створено фронтенд частину застосунку пошуку і перегляду зображень за ключовим словом. Додано оформлення елементів інтерфейсу. Демо-відео роботи застосунку ([https://parceljs.org/])(https://drive.google.com/file/d/1H8r6veuLFtayF07QtIyrSq9ia4X10pmM/view?usp=sharing).
+Створено фронтенд частину застосунку пошуку і перегляду зображень за ключовим словом. Додано оформлення елементів інтерфейсу. Демо-відео роботи застосунку [за цим посиланням](https://drive.google.com/file/d/1H8r6veuLFtayF07QtIyrSq9ia4X10pmM/view?usp=sharing).
+
+## Критерії
+
+- Проект зібраний за допомогою `[parcel-project-template]`(https://github.com/goitacademy/parcel-project-template)
+- Для HTTP-запитів використана бібліотека `[axios]`(https://axios-http.com/)
+- Використовується синтаксис `async/await`.
+- Для повідомлень використана бібліотека [`notiflix`](https://github.com/notiflix/Notiflix#readme)
+- Код відформатований за допомогою `Prettier`.
 
 ## Підготовка нового проекту
 
