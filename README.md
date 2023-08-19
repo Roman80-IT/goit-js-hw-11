@@ -15,7 +15,7 @@
 Форма спочатку міститься в HTML документі. Користувач буде вводити рядок для
 пошуку у текстове поле, а по сабміту форми необхідно виконувати HTTP-запит.
 
-```<em>html</em>
+```html
 <form class="search-form" id="search-form">
   <input
     type="text"
@@ -57,7 +57,7 @@
 
 ```html
 <div class="gallery">
-  <em><!-- Картки зображень --></em>
+  <!-- Картки зображень -->
 </div>
 ```
 
@@ -109,7 +109,7 @@ HTML документ вже містить розмітку кнопки, по 
 Після першого запиту з кожним новим пошуком отримайте повідомлення, в якому буде написано, скільки всього знайшли зображень (властивість `totalHits`). Текст повідомлення - "Hooray! We found {totalHits} images."
 
 ```*javascript*
-<em>// Після отримання відповіді від сервера</em>
+// Після отримання відповіді від сервера
 const totalHits = data.totalHits;
 const message = `Hooray! We found ${totalHits} images.`;
 Notiflix.Notify.success(message);
@@ -123,7 +123,7 @@ Notiflix.Notify.success(message);
 
 ```html
 <a href="ПОСИЛАННЯ_НА_ВЕЛИКЕ_ЗОБРАЖЕННЯ" data-lightbox="gallery-item">
-  <em><!-- Картка зображення --></em>
+ <!-- Картка зображення -->
 </a>
 ```
 
@@ -131,9 +131,9 @@ Notiflix.Notify.success(message);
 Для того щоб підключити CSS код бібліотеки в проект, необхідно додати ще один імпорт, крім того, що описаний в документації.
 
 ```
-<em>// Описаний в документації</em>
+// Описаний в документації
 import SimpleLightbox from "simplelightbox";
-<em>// Додатковий імпорт стилів</em>
+// Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 ```
 
@@ -141,7 +141,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 Зробити плавне прокручування сторінки після запиту і відтворення кожної наступної групи зображень. Ось тобі код-підказка, але розберися у ньому самостійно.
 
-```<em>javascript</em>
+```javascript
 const { height: cardHeight } = document
   .querySelector(".gallery")
   .firstElementChild.getBoundingClientRect();
